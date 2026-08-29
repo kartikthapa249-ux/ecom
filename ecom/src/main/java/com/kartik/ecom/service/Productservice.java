@@ -1,0 +1,77 @@
+package com.kartik.ecom.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.kartik.ecom.model.Product;
+import com.kartik.ecom.respotary.Productrepositary;
+
+@Service
+public class Productservice {
+	
+	@Autowired
+	Productrepositary repo;
+	
+	public String greet() {
+		return "Hello kartik" ;
+	}
+		public List<Product> addproduct(List<Product> product) {
+			return repo.saveAll(product);
+			
+	}
+		public Product Singleproduct(Product product) {
+		    return repo.save(product);
+		}
+		
+		public List<Product> getallproduct(){
+			return repo.findAll();
+		}
+
+		public Product getProduct(int id) {
+			return repo.findById(id).orElse(null);
+		}
+		public void deleteproduct(int id) {
+			repo.deleteById(id);
+		}
+		public Product UpdateProduct(int id, Product product) {	
+		
+			Product existing = repo.findById(id).orElse(null);
+			
+			if(existing != null) {
+				
+			if(existing != null) {
+				existing.setName(product.getName());
+			}
+				if(existing != null) {
+				existing.setDescription(product.getDescription());
+				}	
+				if(existing != null) {
+				existing.setBrand(product.getBrand());
+				}
+				if(existing !=  null ) {
+				existing.setPrice(product.getPrice());
+				}
+				if(existing != null) {
+				existing.setRelease_date(product.getRelease_date());
+				}
+				if(existing != null) {
+				existing.setQuantity(product.getQuantity());
+				}
+				if(existing != null) {
+				existing.setCategary(product.getCategary());
+				}
+				return repo.save(existing);
+			}
+			return null;
+		}
+		public List<Product> Searchproduct(String key) {
+			
+			return repo.findByNameContainingIgnoreCaseOrBrandIgnoreCase(key,key);
+			
+		}
+		public String getbycategary(String categary) {
+			return repo.findByCategary(categary);
+		}
+}
