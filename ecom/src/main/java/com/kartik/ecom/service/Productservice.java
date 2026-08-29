@@ -41,25 +41,25 @@ public class Productservice {
 			
 			if(existing != null) {
 				
-			if(existing != null) {
+			if(product.getName()!= null) {
 				existing.setName(product.getName());
 			}
-				if(existing != null) {
+				if(product.getDescription() != null) {
 				existing.setDescription(product.getDescription());
 				}	
-				if(existing != null) {
+				if(product.getBrand() != null) {
 				existing.setBrand(product.getBrand());
 				}
-				if(existing !=  null ) {
+				if(product.getPrice() !=  null ) {
 				existing.setPrice(product.getPrice());
 				}
-				if(existing != null) {
+				if(product.getRelease_date() != null) {
 				existing.setRelease_date(product.getRelease_date());
 				}
-				if(existing != null) {
+				if(product.getQuantity() != null) {
 				existing.setQuantity(product.getQuantity());
 				}
-				if(existing != null) {
+				if(product.getCategary() != null) {
 				existing.setCategary(product.getCategary());
 				}
 				return repo.save(existing);
