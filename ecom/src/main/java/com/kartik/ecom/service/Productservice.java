@@ -51,15 +51,23 @@ public class Productservice {
 				existing.setBrand(product.getBrand());
 				}
 				if(product.getPrice() !=  null ) {
+					
+					if(product.getPrice() <0 ) {
+						throw new IllegalArgumentException("The Price Cannot be Null");
+					}
 				existing.setPrice(product.getPrice());
 				}
 				if(product.getRelease_date() != null) {
 				existing.setRelease_date(product.getRelease_date());
 				}
 				if(product.getQuantity() != null) {
+					if(product.getQuantity() < 0 ) {
+						 throw new IllegalArgumentException("The Quantity Cannot be Null ");
+					}
 				existing.setQuantity(product.getQuantity());
 				}
-				if(product.getCategary() != null) {
+				if(product.getCategary()
+						!= null) {
 				existing.setCategary(product.getCategary());
 				}
 				return repo.save(existing);
@@ -71,7 +79,9 @@ public class Productservice {
 			return repo.findByNameContainingIgnoreCaseOrBrandIgnoreCase(key,key);
 			
 		}
-		public String getbycategary(String categary) {
+		public List<Product> getbycategary(String categary) {
 			return repo.findByCategary(categary);
 		}
+		
+		
 }
