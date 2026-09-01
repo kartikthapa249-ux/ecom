@@ -65,7 +65,7 @@ public class Prodcontrol {
 		
 	}
 	@GetMapping("/categary")
-	public String getbycategary(@RequestParam String categary) {
+	public List<Product> getbycategary(@RequestParam String categary) {
 		return service.getbycategary(categary);
 	}
 	

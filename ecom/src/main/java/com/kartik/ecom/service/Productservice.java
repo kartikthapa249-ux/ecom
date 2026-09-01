@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.kartik.ecom.Exception_class.Productnotfound;
 import com.kartik.ecom.model.Product;
 import com.kartik.ecom.respotary.Productrepositary;
 
@@ -30,7 +31,9 @@ public class Productservice {
 		}
 
 		public Product getProduct(int id) {
-			return repo.findById(id).orElse(null);
+			return repo.findById(id)
+					.orElseThrow(() -> 
+					new Productnotfound("product not found with id: "+ id));
 		}
 		public void deleteproduct(int id) {
 			repo.deleteById(id);
