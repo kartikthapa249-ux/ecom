@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.kartik.ecom.Exception_class.InvalidProductException;
 import com.kartik.ecom.Exception_class.Productnotfound;
 import com.kartik.ecom.model.Product;
 import com.kartik.ecom.respotary.Productrepositary;
@@ -55,8 +56,8 @@ public class Productservice {
 				}
 				if(product.getPrice() !=  null ) {
 					
-					if(product.getPrice() <0 ) {
-						throw new IllegalArgumentException("The Price Cannot be Null");
+					if(product.getPrice() <= 0 ) {
+						throw new InvalidProductException("The Price Cannot be Null");
 					}
 				existing.setPrice(product.getPrice());
 				}

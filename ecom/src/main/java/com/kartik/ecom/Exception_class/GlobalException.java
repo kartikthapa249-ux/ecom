@@ -16,5 +16,12 @@ public class GlobalException {
 				.body(e.getMessage());
 		
 	}
+	
+	@ExceptionHandler(InvalidProductException.class)
+	public ResponseEntity<String> invalidProductException(InvalidProductException e){
+		return ResponseEntity
+				.status(HttpStatus.NOT_FOUND)
+				.body(e.getMessage());
+	}
 
 }
