@@ -23,5 +23,12 @@ public class GlobalException {
 				.status(HttpStatus.NOT_FOUND)
 				.body(e.getMessage());
 	}
+	
+	@ExceptionHandler(InsufficientStockException.class)
+	public ResponseEntity<String> StockException(InsufficientStockException e){
+		return ResponseEntity
+				.status(HttpStatus.NOT_FOUND)
+				.body(e.getMessage());
+	}
 
 }
