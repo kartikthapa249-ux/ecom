@@ -17,7 +17,6 @@ import com.kartik.ecom.model.Product;
 import com.kartik.ecom.service.Productservice;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
 @CrossOrigin
 @RestController
 @RequestMapping("/product")
@@ -43,27 +42,22 @@ public class Prodcontrol {
 	public List<Product> getallproduct() {
 		return service.getallproduct();
 	}
-	
 	@GetMapping("/{id}")
 	public Product getProduct(@PathVariable int id) {
 		return service.getProduct(id);
 	}
-	
 	@PutMapping("/update/{id}")
 	public Product UpdateProduct(@PathVariable int id , @RequestBody Product product) {
-		return service.UpdateProduct(id, product);
-		
+		return service.UpdateProduct(id, product);	
 	}
-	
 	@DeleteMapping("/delete/{id}")
 	public String deleteproduct(@PathVariable int id) {
 		service.deleteproduct(id);
 		return "Product deleted succesfully";
 	}
 	@GetMapping("/search")
-		public List<Product> Searchproduct(@RequestParam String key ){
-			return service.Searchproduct(key);
-		
+	public List<Product> Searchproduct(@RequestParam String key ){
+		return service.Searchproduct(key);		
 	}
 	@GetMapping("/categary")
 	public List<Product> getbycategary(@RequestParam String categary) {
