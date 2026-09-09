@@ -3,6 +3,7 @@ package com.kartik.ecom.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,6 +31,10 @@ public class Prodcontrol {
 //	public String kar() {
 //		return service.greet();	
 //	}
+//	@GetMapping("/all")
+//	public List<Product> getallproduct() {
+//		return service.getallproduct();
+//	}
 	
 	@PostMapping("/multiple")
 	public List<Product> addproduct(@RequestBody List<Product> product) {
@@ -39,10 +44,7 @@ public class Prodcontrol {
 	public Product Singleproduct(@RequestBody Product product) {
 		return service.Singleproduct(product) ;
 	}
-	@GetMapping("/all")
-	public List<Product> getallproduct() {
-		return service.getallproduct();
-	}
+	
 	
 	@GetMapping("/{id}")
 	public Product getProduct(@PathVariable int id) {
@@ -68,6 +70,14 @@ public class Prodcontrol {
 	@GetMapping("/categary")
 	public List<Product> getbycategary(@RequestParam String categary) {
 		return service.getbycategary(categary);
+	}
+	@GetMapping("/all")
+	public Page<Product> getallproduct(
+			@RequestParam(defaultValue = "0") int page,
+			@RequestParam(defaultValue = "10") int size,
+			@RequestParam(defaultValue = "id") String sortby,
+			@RequestParam(defaultValue = "asc") String direction ) {
+		return service.getallproduct(page,size,sortby,direction);
 	}
 	
 
