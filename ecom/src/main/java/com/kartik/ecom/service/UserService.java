@@ -14,7 +14,7 @@ public class UserService {
 
 	public String login(User user) {
 		
-		User existing = urepo.findbyemail(user.getEmail());
+		User existing = urepo.findByEmail(user.getEmail());
 		if (existing == null) {
 			return "user not found";
 		}
@@ -28,7 +28,7 @@ public class UserService {
 
 	public User register(User user) {
 		
-		User existing = urepo.findbyemail(user.getEmail());
+		User existing = urepo.findByEmail(user.getEmail());
 		if (existing != null) {
 			throw new RuntimeException("user alread registered");
 		}
@@ -42,7 +42,7 @@ public class UserService {
 
 	public User usermail(String email) {
 		
-		return urepo.findbyemail(email);
+		return urepo.findByEmail(email);
 	}
 
 	public User updatedtails(int id, User user) {

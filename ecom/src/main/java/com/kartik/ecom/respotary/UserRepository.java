@@ -8,7 +8,7 @@ import com.kartik.ecom.model.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer> {
 
-	User findbyemail(String email);
+	User findByEmail(String email);
 
 	//User findbyId(User user);
 
