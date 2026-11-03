@@ -50,7 +50,6 @@ public class UserController {
 	}
 	@DeleteMapping("/delete/{id}")
 	public String deleteuser(@PathVariable int id) {
-		userv.deleteuser(id);
-		return "deleted successfuly";
+		return userv.deleteuser(id);
 	}
 }

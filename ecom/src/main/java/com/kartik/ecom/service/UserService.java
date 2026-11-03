@@ -66,8 +66,9 @@ public class UserService {
 		return null;
 	}
 
-	public void deleteuser(int id) {
+	public String deleteuser(int id) {
 		 urepo.deleteById(id);
+		 return "deleted successfully";
 	}	
 
 }
